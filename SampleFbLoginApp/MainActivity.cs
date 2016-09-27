@@ -26,8 +26,7 @@ namespace SampleFbLoginApp
             facebook.Click += delegate { LoginToApp(true); };
 
             activity2 = new Intent(this, typeof(Userdata));
-
-            #region Gmail
+            
             //For Gmail Saved Data Checking
             logoutBtn = FindViewById<Button>(Resource.Id.LogoutButton);
             logoutBtn.Click += Logout;
@@ -56,38 +55,10 @@ namespace SampleFbLoginApp
                 logoutBtn.Enabled = false;
                 Toast.MakeText(this, "You are LoggedOut!!", ToastLength.Short).Show();
             }
-            #endregion
         }
         
-        private static readonly TaskScheduler UIScheduler = TaskScheduler.FromCurrentSynchronizationContext();
-
         void LoginToApp(bool allowCancel)
         {
-            #region Microsoft
-            // ** For Microsoft **//
-            //var auth = new OAuth2Authenticator(
-            //                    clientId: Constants.MSID,
-            //                    scope: Constants.MS_Scope,
-            //                    authorizeUrl: new Uri(Constants.MS_Auth),
-            //                    redirectUrl: new Uri(Constants.MS_Red));
-
-            //auth.Completed += (sender, e) =>
-            //{
-            //    progressDialog = ProgressDialog.Show(this, Constants.wait, Constants.info, true);
-            //    if (!e.IsAuthenticated)
-            //    {
-            //        Toast.MakeText(this, "Fail to authenticate!", ToastLength.Short).Show();
-            //        return;
-            //    }
-            //    else
-            //    {
-            //        Toast.MakeText(this, "Success to authenticate!", ToastLength.Short).Show();
-            //    }
-            //};
-            #endregion
-
-            #region Gmail
-            //***** For Gmail***//
             var auth = new OAuth2Authenticator(
                                 clientId: Constants.GmailID,
                                 scope: Constants.Scope,
@@ -121,11 +92,8 @@ namespace SampleFbLoginApp
                     Toast.MakeText(this, "Welcome " + data["name"], ToastLength.Short).Show();
                     facebook.Enabled = false;
                     logoutBtn.Enabled = true;
-                    //StartActivity(activity2);
                 }
             };
-            #endregion
-           
             StartActivity(auth.GetUI(this));
         }
     }
