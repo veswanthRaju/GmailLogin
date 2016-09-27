@@ -15,17 +15,15 @@ namespace SampleFbLoginApp
     {
         Intent activity2;
         ProgressDialog progressDialog;
-        Button facebook, logoutBtn;
+        Button loginBtn, logoutBtn;
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Main);
 
-            facebook = FindViewById<Button>(Resource.Id.FacebookButton);
-            facebook.Click += delegate { LoginToApp(true); };
-
-            activity2 = new Intent(this, typeof(Userdata));
+            loginBtn = FindViewById<Button>(Resource.Id.LoginButton);
+            loginBtn.Click += delegate { LoginToApp(true); };
             
             //For Gmail Saved Data Checking
             logoutBtn = FindViewById<Button>(Resource.Id.LogoutButton);
@@ -35,12 +33,12 @@ namespace SampleFbLoginApp
             if (cache != null)
             {
                 Toast.MakeText(this, "Hello " + cache.Properties["Username"], ToastLength.Short).Show();
-                facebook.Enabled = false;
+                loginBtn.Enabled = false;
                 logoutBtn.Enabled = true;
             }
             else
             {
-                facebook.Enabled = true;
+                loginBtn.Enabled = true;
                 logoutBtn.Enabled = false;
             }
         }
@@ -51,7 +49,7 @@ namespace SampleFbLoginApp
             if (data != null)
             {
                 AccountStore.Create(this).Delete(data, "myData");
-                facebook.Enabled = true;
+                loginBtn.Enabled = true;
                 logoutBtn.Enabled = false;
                 Toast.MakeText(this, "You are LoggedOut!!", ToastLength.Short).Show();
             }
@@ -90,7 +88,7 @@ namespace SampleFbLoginApp
                     AccountStore.Create(this).Save(account, "myData");
 
                     Toast.MakeText(this, "Welcome " + data["name"], ToastLength.Short).Show();
-                    facebook.Enabled = false;
+                    loginBtn.Enabled = false;
                     logoutBtn.Enabled = true;
                 }
             };

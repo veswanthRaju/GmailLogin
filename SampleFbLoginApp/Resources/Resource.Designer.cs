@@ -63,7 +63,7 @@ namespace SampleFbLoginApp
 		{
 			
 			// aapt resource value: 0x7f050000
-			public const int FacebookButton = 2131034112;
+			public const int LoginButton = 2131034112;
 			
 			// aapt resource value: 0x7f050001
 			public const int LogoutButton = 2131034113;

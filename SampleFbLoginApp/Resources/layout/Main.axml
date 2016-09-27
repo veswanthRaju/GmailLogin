@@ -4,15 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <Button
-        android:id="@+id/FacebookButton"
+        android:id="@+id/LoginButton"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/Facebook" />
-
-  <Button
+    <Button
         android:id="@+id/LogoutButton"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Logout" />
- 
 </LinearLayout>
