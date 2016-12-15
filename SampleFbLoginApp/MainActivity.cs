@@ -1,7 +1,6 @@
 ﻿using Android.App;
 using Android.OS;
 using Android.Widget;
-using System.Threading.Tasks;
 using Xamarin.Auth;
 using System;
 using Android.Content;
@@ -71,6 +70,7 @@ namespace SampleFbLoginApp
                 if (!e.IsAuthenticated)
                 {
                     Toast.MakeText(this, "Fail to authenticate!", ToastLength.Short).Show();
+                    progressDialog.Hide();
                     return;
                 }
 
